@@ -5,23 +5,23 @@
 NAME        MAJ:MIN RM   SIZE RO TYPE MOUNTPOINTS
 
 #efi and swap
-nvme0n1     259:0    0 465.8G  0 disk 
-├─nvme0n1p1 259:1    0   512M  0 part 
-└─nvme0n1p2 259:2    0 465.3G  0 part 
+nvme0n1     259:0    0 465.8G  0 disk
+├─nvme0n1p1 259:1    0   512M  0 part
+└─nvme0n1p2 259:2    0 465.3G  0 part
 
 #root and home
-sda           8:0    0 167.7G  0 disk 
-├─sda1        8:1    0    50M  0 part 
-├─sda2        8:2    0 167.1G  0 part 
-└─sda3        8:3    0   509M  0 part 
+sda           8:0    0 167.7G  0 disk
+├─sda1        8:1    0    50M  0 part
+├─sda2        8:2    0 167.1G  0 part
+└─sda3        8:3    0   509M  0 part
 
 #bulk
-sdc           8:32   0   1.8T  0 disk 
-└─sdc1        8:33   0   1.8T  0 part 
+sdc           8:32   0   1.8T  0 disk
+└─sdc1        8:33   0   1.8T  0 part
 
 #backup
-sdd           8:48   0   1.8T  0 disk 
-└─sdd1        8:49   0   1.8T  0 part 
+sdd           8:48   0   1.8T  0 disk
+└─sdd1        8:49   0   1.8T  0 part
 
 
 	#assign efi(boot) and swap to fastest, nvme
@@ -92,9 +92,9 @@ sdd           8:48   0   1.8T  0 disk
        mkdir /mnt/home
        mount /dev/mapper/home-luks /mnt/home
        #BULK
-       mkdir /mnt/bulk1 
+       mkdir /mnt/bulk1
        mount /dev/${B1} /mnt/bulk1
-       mkdir /mnt/bulk2 
+       mkdir /mnt/bulk2
        mount /dev/${B2} /mnt/bulk2
 
 # set up basic system
@@ -135,7 +135,7 @@ sdd           8:48   0   1.8T  0 disk
        guix install git
        guix install vim
        cd ~
-       git clone "https://github.com/lamb-duh/guix-init"
+       git clone "https://github.com/lamb-dao/guix-init"
        cd guix-init/guix
 
 # prep config
@@ -144,7 +144,7 @@ sdd           8:48   0   1.8T  0 disk
        echo "BASIC-CONFIG.SCM" >> config.scm
        cat ~/.config/guix/basic-config.scm >> config.scm
        echo '!#' >> config.scm
-       vim config.scm # complete fields 
+       vim config.scm # complete fields
 
 # move files into position
        cp channels.scm ~/.config/guix/channels.scm
@@ -155,11 +155,14 @@ sdd           8:48   0   1.8T  0 disk
        key=$(curl https://substitutes.nonguix.org/signing-key.pub)
        sudo guix archive --authorize ${key}
        guix pull
-       hash guix 
+       hash guix
        sudo guix system reconfigure ~/.config/guix/config.scm --substitute-urls='https://ci.guix.gnu.org https://bordeaux.guix.gnu.org https://substitutes.nonguix.org'
        sudo reboot
+
+# follow web guide for initial setup
+      https://guix.gnu.org/manual/en/html_node/Application-Setup.html
 
 #modifying system
        edit config
        guix pull
-       sudo guix system reconfigure ~/.config/guix/config.scm 
+       sudo guix system reconfigure ~/.config/guix/config.scm

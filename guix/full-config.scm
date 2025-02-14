@@ -1,12 +1,12 @@
-;; complete XXX fields with data obtained from basic-config.scm (appended below)
-     (use-modules 
+;; complete &&& fields with data obtained from basic-config.scm (appended at bottom)
+     (use-modules
        (gnu) ;good
        (guix packages) ;good
        (nongnu packages linux) ;bad
        (nongnu system linux-initrd)) ;bad
 
-     (use-package-modules 
-       glib 
+     (use-package-modules
+       glib
        wm ;for stumpwm
        version-control ;for git
        text-editors ;for nano
@@ -79,9 +79,9 @@
 
 
      (operating-system
-       (host-name "lambda-XXX")
-       (timezone "XXX")
-       (locale "XXX")
+       (host-name "lambda-&&&")
+       (timezone "&&&")
+       (locale "&&&")
        (keyboard-layout
         (keyboard-layout "us"))
 
@@ -90,13 +90,13 @@
        (firmware (list linux-firmware))
        (initrd microcode-initrd)
 
-  (bootloader (XXX))
-  (mapped-devices (XXX))
-  (file-systems (XXX))
-  (swap-devices (XXX))
+  (bootloader (&&&))
+  (mapped-devices (&&&))
+  (file-systems (&&&))
+  (swap-devices (&&&))
 
        (groups (cons (user-group
-		       (system? #t) 
+		       (system? #t)
 		       (name "additional-group"))
 		     %base-groups))
 
@@ -112,7 +112,7 @@
 				  "tty"
 				  "lp" ;bluetooth devices
 				  "input"
-				  "audio"  
+				  "audio"
 				  "video")))
          %base-user-accounts))
 
@@ -124,7 +124,7 @@
 	       ijs ; inkjet
 	       ghostscript ; print and scan
 	       ntp ; clock sync
-	       openntpd 
+	       openntpd
 	       python-dbus ;python bindings for desktop-bus protocol
 	       fuse ; user space file systems
 	       gvfs ; for user mounts
@@ -154,23 +154,23 @@
 	       emacs-langtool ; grammar checker
 	       ispell ; emacs spell checker
 	       tree-sitter ; parser for programming tools
-	       vim ; dont forget :q!
+	       vim ; never quit, problem solved you're welcome
 	       git ; gud
 	       screen ; gnu screen multiplexer
 	       sbcl ; steel bank common lisp
 	       python ; slow scripting language (slop)
 	       rclone ; mount remote drives
 	       nyxt ; cool browser that makes me feel like a noob
-	       conda ;packages
-	       nix ;packages
+	       conda ; more packages
+	       nix ; more packages
 	       gwl ; guix workflow language
-	       btop ;monitoring
-	       htop ;monitoring
-	       magic-wormhole ; file sharing
+	       btop ; monitoring
+	       htop ; monitoring
+	       magic-wormhole ; low friction file sharing
 	       llama-cpp ; text gen
 	       flatpak ; binary package manager for zotero etc
-	       ;texlive ; the whole damn latex at once
-	       ;anydesk ; remote access
+	       ;;texlive ; the whole damn latex at once
+	       ;;anydesk ; remote access
 	       %base-packages))
 
 

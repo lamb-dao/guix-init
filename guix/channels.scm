@@ -1,3 +1,4 @@
+;; guix channel, all fsf
 (cons* (channel
         (name 'guix)
         (url "https://git.savannah.gnu.org/git/guix.git")
@@ -6,6 +7,7 @@
             "9edb3f66fd807b096b48283debdcddccfea34bad"
             (openpgp-fingerprint
               "BBB0 2DDF 2CEA F6A8 0D1D  E643 A2A0 6DF2 A33A 54FA"))))
+;; nonguix, non free software
       (channel
         (name 'nonguix)
         (url "https://gitlab.com/nonguix/nonguix")
@@ -15,6 +17,7 @@
             (openpgp-fingerprint
               "2A39 3FFF 68F4 EF7A 3D29  12AF 6F51 20A0 22FB B2D5"))))
       (channel
+;; XComputer XScience, is not about computers, and its not a science
 	(name 'guix-science)
 	(url "https://github.com/guix-science/guix-science.git")
 	(introduction

@@ -1,5 +1,5 @@
 ;; This is a basic guix operating system configuration template
-;; <INCOMPLETE> fields have data at the &&& document
+;; <&&&INCOMPLETE> fields have data appended at the bottom of the document
 
 (use-modules (gnu) (gnu system nss) (guix utils))
 (use-service-modules desktop sddm xorg)
@@ -7,8 +7,8 @@
 
 (operating-system
   (host-name "basic")
-  (timezone "<TIMEZONE>")
-  (locale "<LOCALE>")
+  (timezone "<&&&TIMEZONE>")
+  (locale "<&&&LOCALE>")
   (keyboard-layout (keyboard-layout "us"))
 
   ;; Use the UEFI variant of GRUB with the EFI System
@@ -23,11 +23,11 @@
   ;; ie the luks UUID not the target
   (mapped-devices
    (list (mapped-device
-          (source (uuid "<ROOTLUKSUUID>"))
+          (source (uuid "<&&&ROOTLUKSUUID>"))
           (target "root-partition")
           (type luks-device-mapping))
 	 (mapped-device
-          (source (uuid "<HOMELUKSUUID>"))
+          (source (uuid "<&&&HOMELUKSUUID>"))
           (target "home-partition")
           (type luks-device-mapping))))
 
@@ -43,7 +43,7 @@
                          (type "ext4")
                          (dependencies mapped-devices))
                        (file-system
-                         (device (uuid "<UEFIUUID>" 'fat))
+                         (device (uuid "<&&&UEFIUUID>" 'fat))
                          (mount-point "/boot/efi")
                          (type "vfat")))
                  %base-file-systems))
@@ -51,7 +51,7 @@
   ;; Specify a swap file for the system, which resides on the
   ;; root file system.
   (swap-devices (list (swap-space
-                       (target (uuid "<SWAPUUID>")))))
+                       (target (uuid "<&&&SWAPUUID>")))))
 
   ;; Create user `user' with `user' as initial password.
   ;; by default user 'root' will have '' (nil) as initial password
@@ -72,7 +72,7 @@
                      gvfs)
                     %base-packages))
 
-  ;; Add GNOME 
+  ;; Add GNOME
   ;; Use the "desktop" services, which
   ;; include the X11 log-in service, networking with
   ;; NetworkManager, and more.
